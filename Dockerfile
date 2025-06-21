@@ -1,11 +1,11 @@
-FROM ollama/ollama:0.6.6         # базовый образ
+FROM ollama/ollama:0.6.6
 
-RUN ollama pull mistral-small3.1:24b   # качаем модель один раз
-
-RUN pip install runpod requests        # библиотека для handler
+RUN ollama pull mistral-small3.1:24b
+RUN pip install runpod requests
 
 COPY handler.py /handler.py
-ENV RUNPOD_HANDLER=handler             # /run будет искать этот файл
+
+ENV RUNPOD_HANDLER=handler
 
 ENV OLLAMA_HOST=0.0.0.0
 EXPOSE 11434
